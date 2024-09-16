@@ -1,10 +1,6 @@
 version: 0.2
 
 phases:
-  pre_build:
-    commands:
-      - echo "Caching Docker images"
-      - docker pull your-image:latest || true
   build:
     commands:
       - echo "Building for seeeduino_xiao_ble with poached_eggs_left"

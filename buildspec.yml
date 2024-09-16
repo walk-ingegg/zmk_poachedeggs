@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Building for seeeduino_xiao_ble with poached_eggs_left"
+      - |
+        export board="seeeduino_xiao_ble"
+        export shield="poached_eggs_left"
+        export base_dir="$(pwd)"
+        export config_path="app/boards/shields/poached_eggs"
+        mkdir -p "${base_dir}/build_dir"
+        west init -l "${base_dir}/app"
+        west update
+        cd app
+        west build -d build/left -b seeeduino_xiao_ble -- -DSHIELD=poached_eggs_left
+        west build -d build/right -b seeeduino_xiao_ble -- -DSHIELD=poached_eggs_right
+
+  post_build:
+    commands:
+      - echo "Build completed"

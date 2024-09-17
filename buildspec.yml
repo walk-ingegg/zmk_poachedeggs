@@ -34,4 +34,4 @@ phases:
 artifacts:
   files:
     - build_dir/poached-eggs-firmware.zip
-  name: poached-eggs-firmware-${{ timestamp }}
+  name: poached-eggs-firmware-$(date +%Y-%m-%d)

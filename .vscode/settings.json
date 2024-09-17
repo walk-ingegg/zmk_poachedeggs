@@ -18,8 +18,5 @@
   "[css][json][jsonc][html][markdown][yaml]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
   }
 }

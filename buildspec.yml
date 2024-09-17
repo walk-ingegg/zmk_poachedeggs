@@ -3,7 +3,7 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo "Building for seeeduino_xiao_ble with poached_eggs_left"
+      - echo "Building poached_eggs_firmware"
       - |
         export board="seeeduino_xiao_ble"
         export shield="poached_eggs_left"

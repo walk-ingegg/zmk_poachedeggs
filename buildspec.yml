@@ -25,4 +25,4 @@ phases:
   post_build:
     commands:
       - echo "Build completed"
-      - echo "Artifact created: poached-eggs-firmware.zip"
+      - echo "Artifact created 'poached-eggs-firmware.zip'"

@@ -18,9 +18,9 @@ phases:
 
       # 追加: ファイル名の変更と圧縮
       - echo "Renaming and compressing firmware files"
-      - mv app/build/left/zephyr/zmk.uf2 app/build/left/zephyr/poached-eggs-firmware-left.uf2
-      - mv app/build/right/zephyr/zmk.uf2 app/build/right/zephyr/poached-eggs-firmware-right.uf2
-      - zip -j poached-eggs-firmware.zip app/build/left/zephyr/poached-eggs-firmware-left.uf2 app/build/right/zephyr/poached-eggs-firmware-right.uf2
+      - mv build/left/zephyr/zmk.uf2 build/left/zephyr/poached-eggs-firmware-left.uf2
+      - mv build/right/zephyr/zmk.uf2 build/right/zephyr/poached-eggs-firmware-right.uf2
+      - zip -j poached-eggs-firmware.zip build/left/zephyr/poached-eggs-firmware-left.uf2 build/right/zephyr/poached-eggs-firmware-right.uf2
 
   post_build:
     commands:

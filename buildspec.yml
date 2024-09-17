@@ -1,6 +1,11 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo "Installing zip"
+      - apt-get update && apt-get install -y zip
+
   build:
     commands:
       - echo "Building poached_eggs_firmware"
@@ -16,13 +21,14 @@ phases:
         west build -d build/left -b seeeduino_xiao_ble -- -DSHIELD=poached_eggs_left
         west build -d build/right -b seeeduino_xiao_ble -- -DSHIELD=poached_eggs_right
 
-      # 追加: ファイル名の変更と圧縮
-      - echo "Renaming and compressing firmware files"
+      # 追加: ファイル名の変更
+      - echo "Renaming firmware files"
       - mv build/left/zephyr/zmk.uf2 build/left/zephyr/poached-eggs-firmware-left.uf2
       - mv build/right/zephyr/zmk.uf2 build/right/zephyr/poached-eggs-firmware-right.uf2
-      - zip -j poached-eggs-firmware.zip build/left/zephyr/poached-eggs-firmware-left.uf2 build/right/zephyr/poached-eggs-firmware-right.uf2
 
   post_build:
     commands:
+      - echo "Compressing firmware files"
+      - zip -j poached-eggs-firmware.zip build/left/zephyr/poached-eggs-firmware-left.uf2 build/right/zephyr/poached-eggs-firmware-right.uf2
       - echo "Build completed"
-      - echo "Artifact created 'poached-eggs-firmware.zip'"
+      - echo "Artifact created: poached-eggs-firmware.zip"

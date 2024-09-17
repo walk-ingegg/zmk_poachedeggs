@@ -21,7 +21,6 @@ phases:
         west build -d build/left -b seeeduino_xiao_ble -- -DSHIELD=poached_eggs_left
         west build -d build/right -b seeeduino_xiao_ble -- -DSHIELD=poached_eggs_right
 
-      # 追加: ファイル名の変更
       - echo "Renaming firmware files"
       - mv build/left/zephyr/zmk.uf2 build/left/zephyr/poached-eggs-firmware-left.uf2
       - mv build/right/zephyr/zmk.uf2 build/right/zephyr/poached-eggs-firmware-right.uf2
@@ -29,10 +28,10 @@ phases:
   post_build:
     commands:
       - echo "Compressing firmware files"
-      - zip -j poached-eggs-firmware.zip build/left/zephyr/poached-eggs-firmware-left.uf2 build/right/zephyr/poached-eggs-firmware-right.uf2
+      - zip -j "${base_dir}/build_dir/poached-eggs-firmware.zip" build/left/zephyr/poached-eggs-firmware-left.uf2 build/right/zephyr/poached-eggs-firmware-right.uf2
       - echo "Build completed"
 
 artifacts:
   files:
-    - poached-eggs-firmware.zip
+    - build_dir/poached-eggs-firmware.zip
   name: $(date +%Y%m%d-%H%M%S)/poached-eggs-firmware.zip

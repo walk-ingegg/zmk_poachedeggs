@@ -31,4 +31,8 @@ phases:
       - echo "Compressing firmware files"
       - zip -j poached-eggs-firmware.zip build/left/zephyr/poached-eggs-firmware-left.uf2 build/right/zephyr/poached-eggs-firmware-right.uf2
       - echo "Build completed"
-      - echo "Artifact created --> poached-eggs-firmware.zip"
+
+  artifacts:
+    files:
+      - poached-eggs-firmware.zip
+    name: $(date +%Y%m%d-%H%M%S)/poached-eggs-firmware.zip
